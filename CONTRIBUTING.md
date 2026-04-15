@@ -2,6 +2,14 @@
 
 Thanks for your interest! By contributing you agree to license your contributions under the same Creative Commons license as this repository.
 
+Contributor acknowledgement and licensing (CLA)
+By submitting a contribution (issue, pull request, patch, or other content), you confirm and agree to the following:
+- You retain copyright in your contribution.
+- You grant the repository owners a perpetual, worldwide, royalty-free right to use, reproduce, modify, adapt, publish, translate, create derivative works from, and distribute your contribution as part of this project.
+- You agree to license your contribution under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license and confirm you have the right to do so.
+- You acknowledge that contributions will not be paid and that contributors will be credited in the CONTRIBUTORS or acknowledgements section (unless you request anonymity).
+- You confirm your contribution contains no confidential or third-party proprietary material for which you do not have the necessary rights.
+
 How to contribute
 1. Fork the repo or create a branch in your fork.
 2. Use a descriptive branch name: `feature/chapter-5`, `fix/typo-ch2`, etc.
