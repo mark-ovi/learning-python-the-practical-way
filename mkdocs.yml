@@ -1,0 +1,57 @@
+﻿site_name: "Learning Python the Practical Way: Web Scraping, Automation & APIs"
+site_description: "A concise Python fundamentals book designed for busy professionals, with practical examples and projects. Covers web scraping, automation, APIs, and more."
+site_author: "Mark Cullingworth Overton"
+repo_url: "https://github.com/mark-ovi/learning-python-the-practical-way"      # replace with your public repo URL
+edit_uri: "edit/main/content/free/"          # optional: enables "Edit on GitHub" links
+
+# Where mkdocs finds the source (use your canonical free content)
+docs_dir: content/free
+
+# Where the built site is written (matches your repo layout)
+site_dir: build/public-site
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.top
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+
+plugins:
+  - search
+  - awesome-pages     # generates nav from filesystem (keeps nav in sync with content)
+  # optionally add mkdocs-minify-plugin, mkdocs-redirects, etc.
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.arithmatex
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - type: github
+      link: "{{ repo_url }}"
+
+# static assets that might live under content/shared or content/free/assets
+extra_css:
+  - assets/css/custom.css    # optional; path relative to docs_dir
+extra_javascript:
+  - assets/js/custom.js      # optional
+
+# Optional: explicit nav if you prefer manual ordering
+# If you want control, remove awesome-pages from plugins and uncomment nav below,
+# listing files relative to docs_dir.
+# nav:
+#   - Home: index.md
+#   - Chapter 1: chapters/01-intro.md
+#   - Chapter 2: chapters/02-variables.md
+#   - Examples:
+#     - Chapter01 Example: ../examples/free/chapter01-hello/README.md
+
+# If you need shared assets from content/shared, add a symlink step in CI(build) to copy them into docs_dir before mkdocs build.
