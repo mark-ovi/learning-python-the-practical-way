@@ -5,7 +5,7 @@ repo_url: "https://github.com/mark-ovi/learning-python-the-practical-way"      #
 edit_uri: "edit/main/content/free/"          # optional: enables "Edit on GitHub" links
 
 # Where mkdocs finds the source (use your canonical free content)
-docs_dir: ../content/free
+docs_dir: ../content
 
 # Where the built site is written (matches your repo layout)
 site_dir: build/public-site
