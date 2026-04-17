@@ -35,8 +35,9 @@ markdown_extensions:
 
 extra:
   social:
-    - type: github
-      link: "{{ repo_url }}"
+    - name: GitHub
+      url: https://github.com/mark-ovi
+      icon: fontawesome/brands/github
 
 # static assets that might live under content/shared or content/free/assets
 extra_css:
