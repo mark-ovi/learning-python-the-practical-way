@@ -28,3 +28,8 @@ A free, open-source Python fundamentals book. This repository hosts the public b
     - ./scripts/setup.ps1
     - .venv\Scripts\Activate.ps1
 - Dev server default port: 8000
+
+## Licensing
+
+- **Book text and instructional prose:** [CC BY-NC-SA 4.0](LICENSE.md).
+- **Code samples and project code:** MIT (see [LICENSE-CODE](LICENSE-CODE) and [CODE-LICENSE.md](CODE-LICENSE.md)).
