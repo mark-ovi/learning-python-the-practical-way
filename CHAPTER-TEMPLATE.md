@@ -4,9 +4,9 @@ Use this template when creating a new chapter.
 
 ## File and asset conventions
 
-1. Chapter files go in `content/chapters/` with a numeric prefix, for example: `01-intro.md`.
+1. Chapter files go in `content/chapters/` with a numeric prefix `<part#-chapter#-filename>.md`, for example: `1-2-Loops.md`.
 2. Chapter assets go in `content/assets/<part.chapter>/`, for example: `content/assets/1.2/`.
-3. Asset files use `part#-chapter#-asset-name`, for example: `part1-chapter2-request-flow.png`.
+3. Asset files use `part#-chapter#-asset-name`, for example: `1-2-request-flow.png`.
 4. Prefer reference-style links for reusable asset paths so the chapter body stays readable.
 
 Example asset references from a chapter in `content/chapters/`:
@@ -14,7 +14,7 @@ Example asset references from a chapter in `content/chapters/`:
 ```md
 ![Request flow diagram][img-request-flow]
 
-[img-request-flow]: ../assets/1.2/part1-chapter2-request-flow.png
+[img-request-flow]: ../assets/1.2/1-2-request-flow.png
 ```
 
 ## Chapter template
