@@ -17,6 +17,24 @@ Example asset references from a chapter in `content/chapters/`:
 [img-request-flow]: ../assets/1.2/1-2-request-flow.png
 ```
 
+## Code example conventions
+
+1. Chapter examples go in `content/examples/<part.chapter>/`, for example: `content/examples/1.2/`.
+2. Example files use `<part#-chapter#-example-name>`, for example: `1-2-loops-basic.py`.
+3. If an example needs setup notes or multiple supporting files, add a `README.md` in the same chapter example folder.
+4. If an example needs chapter-specific dependencies, add a `requirements.txt` in the same chapter example folder.
+5. Put tests for chapter examples in `content/examples/<part.chapter>/tests/`.
+6. Chapters map directly to their example and asset folders. For example, `content/chapters/1-2-Loops.md` maps to `content/examples/1.2/` and `content/assets/1.2/`.
+7. Prefer reference-style links for reusable example paths so the chapter body stays readable.
+
+Example code references from a chapter in `content/chapters/`:
+
+```md
+See [the loops example][example-loops-basic].
+
+[example-loops-basic]: ../examples/1.2/1-2-loops-basic.py
+```
+
 ## Chapter template
 
 ```md
@@ -51,7 +69,7 @@ Brief context that connects this chapter to real-world usage.
 
 Explain the main idea first, then show the smallest useful example.
 
-```python title="examples/partX/chapterY/basic_example.py"
+```python title="examples/1.2/1-2-basic-example.py"
 print("Minimal, runnable example")
 ```
 
@@ -109,5 +127,6 @@ One sentence that bridges to the next chapter topic:
 [Part X, Chapter Y+1: Next Topic](./zz-next-topic.md)
 
 <!-- Asset references -->
-[img-example]: ../assets/X.Y/partX-chapterY-example.png
+[img-example]: ../assets/X.Y/X-Y-example.png
+[example-basic]: ../examples/X.Y/X-Y-basic-example.py
 ```
