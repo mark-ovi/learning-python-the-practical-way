@@ -32,4 +32,4 @@ A free, open-source Python fundamentals book. This repository hosts the public b
 ## Licensing
 
 - **Book text and instructional prose:** [CC BY-NC-SA 4.0](LICENSE.md).
-- **Code samples and project code:** MIT (see [LICENSE-CODE](LICENSE-CODE) and [CODE-LICENSE.md](CODE-LICENSE.md)).
+- **Code samples and project code:** MIT (see [LICENSE-CODE](LICENSE-CODE) and [CODE-LICENSE-POLICY.md](CODE-LICENSE-POLICY.md)).
