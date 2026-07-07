@@ -1,4 +1,4 @@
-# Contributing to "Learning Python the Practical Way"
+﻿# Contributing to "Learning Python the Practical Way"
 
 Thanks for your interest! By contributing you agree to license your contributions under the same Creative Commons license as this repository.
 
@@ -30,12 +30,14 @@ Review process
 
 Style & formatting
 - Content: Markdown (UTF-8). Follow existing heading and front-matter conventions.
-- Code: place example code under `/code` with clear file paths. Prefer small, runnable examples.
+- Issues & contributions: see [STYLE-GUIDE.md](STYLE-GUIDE.md)
+- Code: place example code under `/content/examples` with clear file paths. Prefer small, runnable examples.
 - Tests: include tests for example code where practical.
 
 License & attribution
-- This repository is licensed under the Creative Commons license in LICENSE.
-- By contributing you agree your contribution will be licensed under the same CC license.
+- Book text and instructional prose are licensed under CC BY-NC-SA 4.0 (see `LICENSE.md`).
+- Code samples and project code are licensed under MIT (see `LICENSE-CODE.md` and `CODE-LICENSE-POLICY.md`).
+- By contributing, you agree your contribution will be licensed under the applicable license above.
 
 Security
 - Do not open public issues for security-sensitive information. Contact the repository owner privately.

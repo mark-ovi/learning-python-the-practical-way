@@ -3,7 +3,7 @@
 This repository uses a split-license model so text and runnable code are unambiguous:
 
 - **Book text and instructional prose:** Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
-- **Code samples and project code:** MIT License (see [`LICENSE-CODE`](LICENSE-CODE)).
+- **Code samples and project code:** MIT License (see [`LICENSE-CODE.md`](LICENSE-CODE.md)).
 
 ## What counts as "code"
 
