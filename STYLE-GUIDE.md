@@ -70,7 +70,7 @@ repository. Keep changes small, consistent, and runnable.
 Example:
 
 ```bash title="Terminal"
-python free/content/examples/chapter01/hello_world.py
+python free/content/examples/1.1/1-1-hello-world.py
 ```
 
 ```text title="Expected output"
