@@ -22,14 +22,14 @@ git tag `vX.Y.Z`.
 
 - Added the release checklist and release process documentation.
 
-## [X.Y.Z] - YYYY-MM-DD
+## [1.0.0] - 2026-07-20
 
 > Replace `X.Y.Z` with the released version and create the matching git tag
 > `vX.Y.Z` after `main` contains the final public release state.
 
 ### Added
 
-- N/A
+- Initial baseline version with only placeholder content
 
 ### Changed
 
