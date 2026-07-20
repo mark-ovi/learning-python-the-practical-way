@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      site-dir: site
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -23,8 +21,7 @@ jobs:
           pip install -r requirements.txt
       - name: Build site
         run: mkdocs build --site-dir site
-      - name: Upload artifact for PR previews
-        if: github.event_name == 'pull_request'
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: site-artifact
@@ -35,8 +32,14 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-artifact
+          path: site
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
+
