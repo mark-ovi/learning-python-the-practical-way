@@ -1,3 +1,0 @@
-﻿# Variables
-
-Examples and explanations.
