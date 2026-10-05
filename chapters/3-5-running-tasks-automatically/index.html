@@ -1,0 +1,2493 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A concise Python fundamentals book designed for busy professionals, with practical examples and projects. Covers web scraping, automation, APIs, and more.">
+      
+      
+        <meta name="author" content="Mark Cullingworth Overton">
+      
+      
+      
+        <link rel="prev" href="../1-1-intro/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Part 3, Chapter 5: Running Tasks Automatically - Learning Python the Practical Way: Web Scraping, Automation & APIs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-3-chapter-5-running-tasks-automatically" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Learning Python the Practical Way: Web Scraping, Automation &amp; APIs" class="md-header__button md-logo" aria-label="Learning Python the Practical Way: Web Scraping, Automation & APIs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning Python the Practical Way: Web Scraping, Automation & APIs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 3, Chapter 5: Running Tasks Automatically
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mark-ovi/learning-python-the-practical-way" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../1-1-intro/" class="md-tabs__link">
+          
+  
+  
+  Chapters
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning Python the Practical Way: Web Scraping, Automation &amp; APIs" class="md-nav__button md-logo" aria-label="Learning Python the Practical Way: Web Scraping, Automation & APIs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Learning Python the Practical Way: Web Scraping, Automation & APIs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mark-ovi/learning-python-the-practical-way" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-1-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3, Chapter 5: Running Tasks Automatically
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3, Chapter 5: Running Tasks Automatically
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-will-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Will Build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reused-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reused Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-scheduling-changes-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why Scheduling Changes the Application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-keeping-a-process-alive-with-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Keeping a Process Alive With while
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Keeping a Process Alive With while">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-step example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-timesleep-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Why time.sleep() Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-installing-the-schedule-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Installing the schedule Package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-scheduling-an-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Scheduling an Interval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-scheduling-a-daily-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Scheduling a Daily Job
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-scheduling-does-not-perform-the-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Scheduling Does Not Perform the Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-separate-scheduling-from-task-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Separate Scheduling From Task Logic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Separate Scheduling From Task Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduling-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-passing-functions-to-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Passing Functions to the Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-introducing-automation_enginepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Introducing automation_engine.py
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-why-task-order-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Why Task Order Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-stopping-the-pipeline-after-a-critical-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Stopping the Pipeline After a Critical Failure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-preventing-duplicate-schedule-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Preventing Duplicate Schedule Registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-building-a-reusable-scheduler-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Building a Reusable Scheduler Component
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-graceful-shutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Graceful Shutdown
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-logging-scheduled-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Logging Scheduled Runs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-the-complete-automation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. The Complete Automation Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-running-the-pipeline-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Running the Pipeline Once
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-testing-without-waiting-for-real-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Testing Without Waiting for Real Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-step-by-step-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Step-by-Step Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="20. Step-by-Step Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-keep-a-process-alive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Keep a process alive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-register-a-scheduled-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Register a scheduled job
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-coordinate-task-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Coordinate task functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-separate-scheduler-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Separate scheduler registration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-build-the-complete-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Build the complete scheduler
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-the-complete-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. The Complete Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="21. The Complete Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        main.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automation_enginepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        automation_engine.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedulerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        scheduler.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasksindex_taskpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tasks/index_task.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskscsv_reporterpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tasks/csv_reporter.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasksbackup_taskpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tasks/backup_task.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging_utilspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        logging_utils.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-exercise-add-a-second-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. Exercise: Add a Second Interval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-exercise-add-a-dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23. Exercise: Add a Dry Run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-exercise-improve-shutdown-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24. Exercise: Improve Shutdown Logging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-versus-reused-concepts-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Versus Reused Concepts Recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New Versus Reused Concepts Recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-concepts-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Concepts Recap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reused-concepts-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reused Concepts Recap
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter Recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Evolution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Chapter
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Next Chapter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-36-deploying-the-automation-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 3.6 — Deploying the Automation Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-will-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Will Build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reused-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reused Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-scheduling-changes-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why Scheduling Changes the Application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-keeping-a-process-alive-with-while" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Keeping a Process Alive With while
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Keeping a Process Alive With while">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step-by-step example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-timesleep-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Why time.sleep() Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-installing-the-schedule-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Installing the schedule Package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-scheduling-an-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Scheduling an Interval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-scheduling-a-daily-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Scheduling a Daily Job
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-scheduling-does-not-perform-the-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Scheduling Does Not Perform the Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-separate-scheduling-from-task-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Separate Scheduling From Task Logic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Separate Scheduling From Task Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orchestration-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestration logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduling-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-passing-functions-to-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Passing Functions to the Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-introducing-automation_enginepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Introducing automation_engine.py
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-why-task-order-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Why Task Order Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-stopping-the-pipeline-after-a-critical-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Stopping the Pipeline After a Critical Failure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-preventing-duplicate-schedule-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Preventing Duplicate Schedule Registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-building-a-reusable-scheduler-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Building a Reusable Scheduler Component
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-graceful-shutdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Graceful Shutdown
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-logging-scheduled-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Logging Scheduled Runs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-the-complete-automation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. The Complete Automation Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-running-the-pipeline-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Running the Pipeline Once
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-testing-without-waiting-for-real-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Testing Without Waiting for Real Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-step-by-step-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Step-by-Step Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="20. Step-by-Step Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-keep-a-process-alive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Keep a process alive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-register-a-scheduled-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Register a scheduled job
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-coordinate-task-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Coordinate task functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-separate-scheduler-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Separate scheduler registration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-build-the-complete-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Build the complete scheduler
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-the-complete-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. The Complete Project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="21. The Complete Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        main.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automation_enginepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        automation_engine.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedulerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        scheduler.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasksindex_taskpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tasks/index_task.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskscsv_reporterpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tasks/csv_reporter.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasksbackup_taskpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tasks/backup_task.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging_utilspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        logging_utils.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-exercise-add-a-second-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        22. Exercise: Add a Second Interval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-exercise-add-a-dry-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23. Exercise: Add a Dry Run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-exercise-improve-shutdown-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24. Exercise: Improve Shutdown Logging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-versus-reused-concepts-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Versus Reused Concepts Recap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New Versus Reused Concepts Recap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-concepts-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New Concepts Recap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reused-concepts-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reused Concepts Recap
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter Recap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Evolution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-chapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Chapter
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Next Chapter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-36-deploying-the-automation-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 3.6 — Deploying the Automation Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<!-- markdownlint-configure-file {"MD025": {"front_matter_title": ""}} -->
+
+<h1 id="part-3-chapter-5-running-tasks-automatically">Part 3, Chapter 5: Running Tasks Automatically<a class="headerlink" href="#part-3-chapter-5-running-tasks-automatically" title="Permanent link">&para;</a></h1>
+<p>In Chapter 3.4, the Workspace Automation Engine learned how to behave
+reliably when individual operations fail.</p>
+<p>The next problem is operational.</p>
+<p>Someone still has to start the program.</p>
+<p>A useful automation should be able to run on its own. It might update the
+Workspace Index every 30 minutes, generate a report, and make a backup every
+time the pipeline runs.</p>
+<p>This chapter introduces a scheduler and turns the project into a
+long-running process.</p>
+<p>The chapter uses the third-party schedule package. Part 2 already introduced
+third-party packages through BeautifulSoup, so the package itself is not a
+new kind of Python idea.</p>
+<p>The design remains procedural. automation_engine.py coordinates existing task
+functions, while scheduler.py handles recurring execution. Classes, type
+annotations, and the formal AutomationEngine abstraction are deferred to
+Chapter 3.7.</p>
+<h2 id="what-you-will-build">What You Will Build<a class="headerlink" href="#what-you-will-build" title="Permanent link">&para;</a></h2>
+<p>The final project will contain:</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">3</span><span class="o">-</span><span class="mf">5</span><span class="o">-</span><span class="n">workspace</span><span class="o">-</span><span class="n">automation</span><span class="o">-</span><span class="n">engine</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">main</span><span class="mf">.</span><span class="n">py</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">automation_engine</span><span class="mf">.</span><span class="n">py</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">scheduler</span><span class="mf">.</span><span class="n">py</span>
+<span class="err">├──</span><span class="w"> </span><span class="nb">log</span><span class="n">ging_utils</span><span class="mf">.</span><span class="n">py</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">tasks</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">__init__</span><span class="mf">.</span><span class="n">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">index_task</span><span class="mf">.</span><span class="n">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">csv_reporter</span><span class="mf">.</span><span class="n">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">backup_task</span><span class="mf">.</span><span class="n">py</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">workspace</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">backups</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">reports</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="nb">log</span><span class="n">s</span><span class="o">/</span>
+<span class="err">└──</span><span class="w"> </span><span class="n">workspace_index</span><span class="mf">.</span><span class="n">json</span>
+</code></pre></div>
+
+<p>The automation pipeline will run in this order:</p>
+<div class="codehilite"><pre><span></span><code>Workspace
+    ↓
+Update Workspace Index
+    ↓
+Generate CSV Report
+    ↓
+Back Up Workspace
+</code></pre></div>
+
+<p>The scheduler then decides when that pipeline runs.</p>
+<h2 id="learning-goals">Learning Goals<a class="headerlink" href="#learning-goals" title="Permanent link">&para;</a></h2>
+<p>You will learn how to:</p>
+<ul>
+<li>use a while loop for a long-running process;</li>
+<li>use time.sleep() to control a polling loop;</li>
+<li>schedule recurring functions with schedule;</li>
+<li>distinguish scheduling from task orchestration;</li>
+<li>coordinate multiple task functions in a predictable order;</li>
+<li>introduce a procedural automation_engine.py;</li>
+<li>prevent duplicate schedule registration;</li>
+<li>handle KeyboardInterrupt for graceful shutdown;</li>
+<li>test scheduling without waiting for real time to pass.</li>
+</ul>
+<h2 id="new-concepts">New Concepts<a class="headerlink" href="#new-concepts" title="Permanent link">&para;</a></h2>
+<p>This chapter introduces:</p>
+<ul>
+<li>while loops;</li>
+<li>time.sleep();</li>
+<li>the schedule package;</li>
+<li>recurring jobs;</li>
+<li>procedural task orchestration;</li>
+<li>scheduler registration;</li>
+<li>graceful shutdown with KeyboardInterrupt.</li>
+</ul>
+<h2 id="reused-concepts">Reused Concepts<a class="headerlink" href="#reused-concepts" title="Permanent link">&para;</a></h2>
+<p>You already know:</p>
+<ul>
+<li>for loops;</li>
+<li>conditionals;</li>
+<li>functions and return values;</li>
+<li>exceptions;</li>
+<li>logging;</li>
+<li>modules;</li>
+<li>third-party package installation;</li>
+<li>filesystem operations;</li>
+<li>dictionaries and JSON;</li>
+<li>the Workspace Index.</li>
+</ul>
+<p>The important progression is that the program is now responsible for staying
+alive and deciding when work should happen.</p>
+<hr />
+<h2 id="1-why-scheduling-changes-the-application">1. Why Scheduling Changes the Application<a class="headerlink" href="#1-why-scheduling-changes-the-application" title="Permanent link">&para;</a></h2>
+<p>A manual program often looks like this:</p>
+<div class="codehilite"><pre><span></span><code>python main.py
+</code></pre></div>
+
+<p>The person starts it, the task runs, and the process exits.</p>
+<p>That is appropriate for a one-time command.</p>
+<p>Automation is different. You might want a report to be refreshed regularly
+without remembering to start the program.</p>
+<p>A scheduler answers a simple question:</p>
+<blockquote>
+<p>When should this function run?</p>
+</blockquote>
+<p>The scheduler does not need to know what the function does.</p>
+<p>For example:</p>
+<div class="codehilite"><pre><span></span><code>def create_report():
+    print(&quot;Report generated.&quot;)
+</code></pre></div>
+
+<p>The scheduler can treat create_report as a job without knowing anything about
+reports.</p>
+<p>This separation is important:</p>
+<ul>
+<li>a task knows how to perform work;</li>
+<li>the automation engine knows which tasks belong together;</li>
+<li>the scheduler knows when the automation should run.</li>
+</ul>
+<hr />
+<h2 id="2-keeping-a-process-alive-with-while">2. Keeping a Process Alive With while<a class="headerlink" href="#2-keeping-a-process-alive-with-while" title="Permanent link">&para;</a></h2>
+<p>A scheduler needs a process that remains alive long enough to check for
+scheduled work.</p>
+<p>A while loop repeats a block while its condition is true:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="k">while</span><span class="w"> </span><span class="nv">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span>:
+<span class="w">    </span><span class="nv">print</span><span class="ss">(</span><span class="s2">&quot;Checking...&quot;</span><span class="ss">)</span>
+<span class="w">    </span><span class="nv">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+</code></pre></div>
+
+<p>This is different from a for loop.</p>
+<p>A for loop is often used when you have a collection or a known sequence of
+values.</p>
+<p>A while loop is useful when repetition should continue until a condition
+changes.</p>
+<p>A long-running scheduler commonly uses:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="nv">True</span>:
+<span class="w">    </span>...
+</code></pre></div>
+
+<p>True never becomes false on its own, so the loop continues until something
+stops it.</p>
+<p>That something could be a keyboard interruption, an exception, or an explicit
+shutdown mechanism.</p>
+<h3 id="step-by-step-example">Step-by-step example<a class="headerlink" href="#step-by-step-example" title="Permanent link">&para;</a></h3>
+<p>See:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">../examples/3.5/3-5-step1-while-loop.py</span>
+</code></pre></div>
+
+<p>The example deliberately stops after three iterations so you can run it
+without creating a permanent process.</p>
+<hr />
+<h2 id="3-why-timesleep-matters">3. Why time.sleep() Matters<a class="headerlink" href="#3-why-timesleep-matters" title="Permanent link">&para;</a></h2>
+<p>A loop like this would run continuously:</p>
+<div class="codehilite"><pre><span></span><code>while True:
+    check_for_work()
+</code></pre></div>
+
+<p>It could check thousands of times per second.</p>
+<p>That is unnecessary.</p>
+<p>Use time.sleep() to pause before checking again:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">check_for_work</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The argument is the number of seconds to sleep.</p>
+<p>For a scheduler, the sleep interval controls how often the program asks:</p>
+<blockquote>
+<p>Is anything ready to run now?</p>
+</blockquote>
+<p>A shorter interval checks more often.</p>
+<p>A longer interval uses less CPU but can delay the next check.</p>
+<p>The scheduler does not need to run every job every second. It only needs to
+check often enough for the application's requirements.</p>
+<hr />
+<h2 id="4-installing-the-schedule-package">4. Installing the schedule Package<a class="headerlink" href="#4-installing-the-schedule-package" title="Permanent link">&para;</a></h2>
+<p>The project adds schedule to requirements.txt.</p>
+<p>Install the project dependencies in the same way you installed earlier
+third-party packages.</p>
+<p>The package provides a small API for recurring jobs.</p>
+<p>The basic pattern is:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">schedule</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">job</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Working&quot;</span><span class="p">)</span>
+
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">schedule</span><span class="o">.</span><span class="n">Scheduler</span><span class="p">()</span>
+<span class="n">scheduler</span><span class="o">.</span><span class="n">every</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">minutes</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The job function is passed to do() rather than called immediately.</p>
+<p>Compare:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">scheduler</span>.<span class="nv">every</span><span class="ss">(</span><span class="mi">10</span><span class="ss">)</span>.<span class="nv">minutes</span>.<span class="k">do</span><span class="ss">(</span><span class="nv">job</span><span class="ss">)</span>
+</code></pre></div>
+
+<p>with:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">scheduler</span>.<span class="nv">every</span><span class="ss">(</span><span class="mi">10</span><span class="ss">)</span>.<span class="nv">minutes</span>.<span class="k">do</span><span class="ss">(</span><span class="nv">job</span><span class="ss">())</span>
+</code></pre></div>
+
+<p>The first gives the scheduler the function.</p>
+<p>The second calls the function immediately and gives its return value to do().</p>
+<p>This distinction matters whenever a function is used as a callback.</p>
+<hr />
+<h2 id="5-scheduling-an-interval">5. Scheduling an Interval<a class="headerlink" href="#5-scheduling-an-interval" title="Permanent link">&para;</a></h2>
+<p>The scheduler supports intervals such as seconds, minutes, hours, and days.</p>
+<p>For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">scheduler</span>.<span class="nv">every</span><span class="ss">(</span><span class="mi">30</span><span class="ss">)</span>.<span class="nv">minutes</span>.<span class="k">do</span><span class="ss">(</span><span class="nv">job</span><span class="ss">)</span>
+</code></pre></div>
+
+<p>This means the job should run every 30 minutes.</p>
+<p>For a short experiment, use seconds:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">scheduler</span>.<span class="nv">every</span><span class="ss">(</span><span class="mi">5</span><span class="ss">)</span>.<span class="nv">seconds</span>.<span class="k">do</span><span class="ss">(</span><span class="nv">job</span><span class="ss">)</span>
+</code></pre></div>
+
+<p>The project uses an interval in minutes because the Workspace Automation
+Engine is intended for recurring workspace work rather than a rapid demo.</p>
+<p>See:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">../examples/3.5/3-5-step2-schedule.py</span>
+</code></pre></div>
+
+<p>The example uses run_all() so the scheduled job can be demonstrated
+immediately instead of waiting for the clock.</p>
+<hr />
+<h2 id="6-scheduling-a-daily-job">6. Scheduling a Daily Job<a class="headerlink" href="#6-scheduling-a-daily-job" title="Permanent link">&para;</a></h2>
+<p>A recurring daily job can run at a specific time:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">scheduler</span>.<span class="nv">every</span><span class="ss">()</span>.<span class="nv">day</span>.<span class="nv">at</span><span class="ss">(</span><span class="s2">&quot;09:00&quot;</span><span class="ss">)</span>.<span class="k">do</span><span class="ss">(</span><span class="nv">job</span><span class="ss">)</span>
+</code></pre></div>
+
+<p>The time uses a 24-hour clock.</p>
+<p>This is useful when the task has a business-oriented schedule, such as a
+report that should be refreshed each morning.</p>
+<p>The application can have both kinds of schedules:</p>
+<div class="codehilite"><pre><span></span><code>scheduler.every(30).minutes.do(run_pipeline)
+scheduler.every().day.at(&quot;09:00&quot;).do(run_pipeline)
+</code></pre></div>
+
+<p>Both schedules can point to the same pipeline.</p>
+<p>The scheduler decides when the function runs. The pipeline decides what work
+happens.</p>
+<hr />
+<h2 id="7-scheduling-does-not-perform-the-work">7. Scheduling Does Not Perform the Work<a class="headerlink" href="#7-scheduling-does-not-perform-the-work" title="Permanent link">&para;</a></h2>
+<p>Registering a job is not the same as running it.</p>
+<p>After registration, the process must periodically check for pending jobs:</p>
+<div class="codehilite"><pre><span></span><code>while True:
+    scheduler.run_pending()
+    time.sleep(1)
+</code></pre></div>
+
+<p>run_pending() asks the scheduler to run jobs whose scheduled time has arrived.</p>
+<p>This gives us the complete loop:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">create</span><span class="w"> </span><span class="n">scheduler</span>
+<span class="w">    </span><span class="err">↓</span>
+<span class="n">register</span><span class="w"> </span><span class="n">jobs</span>
+<span class="w">    </span><span class="err">↓</span>
+<span class="n">keep</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">alive</span>
+<span class="w">    </span><span class="err">↓</span>
+<span class="n">run</span><span class="w"> </span><span class="n">pending</span><span class="w"> </span><span class="n">jobs</span>
+<span class="w">    </span><span class="err">↓</span>
+<span class="n">sleep</span>
+<span class="w">    </span><span class="err">↓</span>
+<span class="n">check</span><span class="w"> </span><span class="n">again</span>
+</code></pre></div>
+
+<p>That pattern is the core of this chapter.</p>
+<hr />
+<h2 id="8-separate-scheduling-from-task-logic">8. Separate Scheduling From Task Logic<a class="headerlink" href="#8-separate-scheduling-from-task-logic" title="Permanent link">&para;</a></h2>
+<p>It would be tempting to put all of the following into one large function:</p>
+<ul>
+<li>scan the workspace;</li>
+<li>update JSON;</li>
+<li>generate a report;</li>
+<li>create backups;</li>
+<li>register schedules;</li>
+<li>keep the process alive.</li>
+</ul>
+<p>That makes the program difficult to change.</p>
+<p>Instead, keep three responsibilities separate.</p>
+<h3 id="task-logic">Task logic<a class="headerlink" href="#task-logic" title="Permanent link">&para;</a></h3>
+<p>Task modules perform useful work.</p>
+<p>Examples:</p>
+<div class="codehilite"><pre><span></span><code>tasks/index_task.py
+tasks/csv_reporter.py
+tasks/backup_task.py
+</code></pre></div>
+
+<h3 id="orchestration-logic">Orchestration logic<a class="headerlink" href="#orchestration-logic" title="Permanent link">&para;</a></h3>
+<p>automation_engine.py decides which tasks belong together and in what order.</p>
+<h3 id="scheduling-logic">Scheduling logic<a class="headerlink" href="#scheduling-logic" title="Permanent link">&para;</a></h3>
+<p>scheduler.py decides when the pipeline should run.</p>
+<p>This is still procedural Python. We are separating responsibilities without
+introducing classes.</p>
+<hr />
+<h2 id="9-passing-functions-to-the-pipeline">9. Passing Functions to the Pipeline<a class="headerlink" href="#9-passing-functions-to-the-pipeline" title="Permanent link">&para;</a></h2>
+<p>A function can be stored in a variable or a list.</p>
+<p>For example:</p>
+<div class="codehilite"><pre><span></span><code>def update_index():
+    print(&quot;Index updated.&quot;)
+
+def generate_report():
+    print(&quot;Report generated.&quot;)
+
+tasks = [update_index, generate_report]
+
+for task in tasks:
+    task()
+</code></pre></div>
+
+<p>The list contains the functions themselves.</p>
+<p>The loop retrieves each function and calls it.</p>
+<p>This lets an orchestration function work with a collection of tasks without
+hard-coding every step into the loop.</p>
+<p>See:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">../examples/3.5/3-5-step3-orchestration.py</span>
+</code></pre></div>
+
+<p>This builds directly on functions as arguments and values from earlier
+chapters.</p>
+<hr />
+<h2 id="10-introducing-automation_enginepy">10. Introducing automation_engine.py<a class="headerlink" href="#10-introducing-automation_enginepy" title="Permanent link">&para;</a></h2>
+<p>The project now gains its first explicit automation_engine.py module.</p>
+<p>At this stage, the name means a procedural orchestration module.</p>
+<p>It is not a class.</p>
+<p>A simple pipeline can look like:</p>
+<div class="codehilite"><pre><span></span><code>def run_pipeline(tasks, logger):
+    results = []
+
+    for name, task in tasks:
+        result = run_task(name, task, logger)
+        results.append((name, result))
+
+        if result is False:
+            break
+
+    return results
+</code></pre></div>
+
+<p>The engine knows the sequence of tasks.</p>
+<p>It does not need to know how the index is built or how CSV files are written.</p>
+<p>That work stays inside the task modules.</p>
+<p>The full AutomationEngine object is deliberately deferred to Chapter 3.7.</p>
+<hr />
+<h2 id="11-why-task-order-matters">11. Why Task Order Matters<a class="headerlink" href="#11-why-task-order-matters" title="Permanent link">&para;</a></h2>
+<p>The Workspace Automation Engine has dependencies between tasks.</p>
+<p>The report should describe the current Workspace Index.</p>
+<p>Therefore:</p>
+<div class="codehilite"><pre><span></span><code>Update Index
+    ↓
+Generate Report
+</code></pre></div>
+
+<p>is correct.</p>
+<p>The reverse order is misleading:</p>
+<div class="codehilite"><pre><span></span><code>Generate Report
+    ↓
+Update Index
+</code></pre></div>
+
+<p>The report would be based on the previous state.</p>
+<p>The same idea applies to other workflows.</p>
+<p>Before automating a sequence, ask:</p>
+<ol>
+<li>What state does each task read?</li>
+<li>What state does each task change?</li>
+<li>Which task must happen first?</li>
+<li>What should happen if an earlier task fails?</li>
+</ol>
+<p>The scheduler does not answer these questions.</p>
+<p>The orchestration layer does.</p>
+<hr />
+<h2 id="12-stopping-the-pipeline-after-a-critical-failure">12. Stopping the Pipeline After a Critical Failure<a class="headerlink" href="#12-stopping-the-pipeline-after-a-critical-failure" title="Permanent link">&para;</a></h2>
+<p>Suppose updating the Workspace Index fails.</p>
+<p>Should the report still run?</p>
+<p>Usually not.</p>
+<p>The report could describe stale or missing state.</p>
+<p>The procedural engine therefore stops the pipeline when a task reports
+failure.</p>
+<p>For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nb">result</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">False</span>:
+<span class="w">    </span><span class="nv">logger</span>.<span class="nv">error</span><span class="ss">(</span><span class="s2">&quot;Pipeline stopped&quot;</span><span class="ss">)</span>
+<span class="w">    </span><span class="k">break</span>
+</code></pre></div>
+
+<p>This uses the failure-handling ideas from Chapter 3.4.</p>
+<p>Not every failure needs to stop an entire pipeline. The decision belongs to the
+workflow being automated.</p>
+<hr />
+<h2 id="13-preventing-duplicate-schedule-registration">13. Preventing Duplicate Schedule Registration<a class="headerlink" href="#13-preventing-duplicate-schedule-registration" title="Permanent link">&para;</a></h2>
+<p>A common scheduling mistake is registering the same job repeatedly.</p>
+<p>Imagine this code runs twice:</p>
+<div class="codehilite"><pre><span></span><code>scheduler.every(30).minutes.do(run_pipeline)
+scheduler.every(30).minutes.do(run_pipeline)
+</code></pre></div>
+
+<p>Now two jobs are registered.</p>
+<p>The pipeline could execute twice every 30 minutes.</p>
+<p>The schedule library supports job tags. The project uses a tag to identify
+each kind of registration:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">scheduler</span>.<span class="nv">every</span><span class="ss">(</span><span class="mi">30</span><span class="ss">)</span>.<span class="nv">minutes</span>.<span class="k">do</span><span class="ss">(</span><span class="nv">job</span><span class="ss">)</span>.<span class="nv">tag</span><span class="ss">(</span><span class="s2">&quot;automation-interval&quot;</span><span class="ss">)</span>
+</code></pre></div>
+
+<p>Before registering another job, check whether that tag already exists:</p>
+<div class="codehilite"><pre><span></span><code>if scheduler.get_jobs(&quot;automation-interval&quot;):
+    return False
+</code></pre></div>
+
+<p>This gives registration a clear rule:</p>
+<blockquote>
+<p>Register this schedule once.</p>
+</blockquote>
+<p>It also makes the scheduler component easier to test.</p>
+<hr />
+<h2 id="14-building-a-reusable-scheduler-component">14. Building a Reusable Scheduler Component<a class="headerlink" href="#14-building-a-reusable-scheduler-component" title="Permanent link">&para;</a></h2>
+<p>Move scheduling details into scheduler.py.</p>
+<p>A reusable interval registration function can be:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">register_interval_job</span><span class="p">(</span><span class="n">scheduler</span><span class="p">,</span><span class="w"> </span><span class="n">interval_minutes</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">scheduler</span><span class="p">.</span><span class="n">get_jobs</span><span class="p">(</span><span class="s">&quot;automation-interval&quot;</span><span class="p">)</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">    </span><span class="n">scheduler</span><span class="p">.</span><span class="n">every</span><span class="p">(</span><span class="n">interval_minutes</span><span class="p">).</span><span class="n">minutes</span><span class="p">.</span><span class="k">do</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">True</span>
+</code></pre></div>
+
+<p>A daily registration function follows the same pattern.</p>
+<p>The rest of the application does not need to know how schedule jobs are
+represented internally.</p>
+<p>See:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">../examples/3.5/3-5-step4-scheduler-component.py</span>
+</code></pre></div>
+
+<p>The example registers both an interval job and a daily job.</p>
+<hr />
+<h2 id="15-graceful-shutdown">15. Graceful Shutdown<a class="headerlink" href="#15-graceful-shutdown" title="Permanent link">&para;</a></h2>
+<p>A long-running process needs a way to stop.</p>
+<p>When you run a Python program in a terminal, pressing Ctrl+C raises
+KeyboardInterrupt.</p>
+<p>Handle it explicitly:</p>
+<div class="codehilite"><pre><span></span><code>try:
+    while True:
+        scheduler.run_pending()
+        time.sleep(1)
+except KeyboardInterrupt:
+    logger.info(&quot;Automation scheduler stopped.&quot;)
+</code></pre></div>
+
+<p>This is graceful shutdown.</p>
+<p>The program records that it stopped rather than producing an unexplained
+traceback.</p>
+<p>The handler should stay focused.</p>
+<p>It should not catch every exception and pretend the process stopped normally.</p>
+<p>Unexpected programming errors should remain visible.</p>
+<hr />
+<h2 id="16-logging-scheduled-runs">16. Logging Scheduled Runs<a class="headerlink" href="#16-logging-scheduled-runs" title="Permanent link">&para;</a></h2>
+<p>Chapter 3.4 introduced logging.</p>
+<p>Now logging becomes especially useful because the program may run when nobody
+is watching it.</p>
+<p>Record important events:</p>
+<div class="codehilite"><pre><span></span><code>logger.info(&quot;Automation scheduler started.&quot;)
+logger.info(&quot;Starting task: Update Workspace Index&quot;)
+logger.info(&quot;Finished task: Update Workspace Index&quot;)
+logger.info(&quot;Automation scheduler stopped.&quot;)
+</code></pre></div>
+
+<p>These messages help answer:</p>
+<ul>
+<li>Did the scheduler start?</li>
+<li>Did the pipeline run?</li>
+<li>Which task ran?</li>
+<li>Did a task fail?</li>
+<li>Did the process shut down?</li>
+</ul>
+<p>This is operational visibility.</p>
+<hr />
+<h2 id="17-the-complete-automation-pipeline">17. The Complete Automation Pipeline<a class="headerlink" href="#17-the-complete-automation-pipeline" title="Permanent link">&para;</a></h2>
+<p>The final project combines the pieces:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">scheduled_pipeline</span><span class="p">()</span><span class="o">:</span>
+<span class="w">    </span><span class="n">run_once</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
+
+<span class="n">register_interval_job</span><span class="p">(</span>
+<span class="w">    </span><span class="n">scheduler</span><span class="p">,</span>
+<span class="w">    </span><span class="n">INTERVAL_MINUTES</span><span class="p">,</span>
+<span class="w">    </span><span class="n">scheduled_pipeline</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">register_daily_job</span><span class="p">(</span>
+<span class="w">    </span><span class="n">scheduler</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DAILY_TIME</span><span class="p">,</span>
+<span class="w">    </span><span class="n">scheduled_pipeline</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">run_scheduler</span><span class="p">(</span>
+<span class="w">    </span><span class="n">scheduler</span><span class="p">,</span>
+<span class="w">    </span><span class="n">CHECK_INTERVAL_SECONDS</span><span class="p">,</span>
+<span class="w">    </span><span class="n">logger</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The scheduler knows when to call scheduled_pipeline.</p>
+<p>The automation engine knows that the pipeline is:</p>
+<ol>
+<li>update the Workspace Index;</li>
+<li>generate the report;</li>
+<li>create the backup.</li>
+</ol>
+<p>The individual task modules know how to perform those operations.</p>
+<p>Each layer has one main responsibility.</p>
+<hr />
+<h2 id="18-running-the-pipeline-once">18. Running the Pipeline Once<a class="headerlink" href="#18-running-the-pipeline-once" title="Permanent link">&para;</a></h2>
+<p>A long-running scheduler is awkward when you only want to verify the
+pipeline.</p>
+<p>The solution therefore exposes a one-run mode:</p>
+<div class="codehilite"><pre><span></span><code>python main.py --once
+</code></pre></div>
+
+<p>This runs the task pipeline immediately and exits.</p>
+<p>It is useful for:</p>
+<ul>
+<li>testing;</li>
+<li>development;</li>
+<li>checking the workspace;</li>
+<li>verifying task order;</li>
+<li>debugging a deployment before enabling recurring execution.</li>
+</ul>
+<p>The normal command:</p>
+<div class="codehilite"><pre><span></span><code>python main.py
+</code></pre></div>
+
+<p>starts the scheduler and keeps the process alive.</p>
+<p>This distinction is useful in real applications: one function can perform the
+work, while another function controls when that work is triggered.</p>
+<hr />
+<h2 id="19-testing-without-waiting-for-real-time">19. Testing Without Waiting for Real Time<a class="headerlink" href="#19-testing-without-waiting-for-real-time" title="Permanent link">&para;</a></h2>
+<p>Automated tests should not wait 30 minutes to prove that a 30-minute job was
+registered.</p>
+<p>Instead, test the scheduler's behavior directly.</p>
+<p>For example, verify:</p>
+<ul>
+<li>an interval registration creates one job;</li>
+<li>registering the same interval again does not create a second job;</li>
+<li>a daily registration creates a job;</li>
+<li>KeyboardInterrupt is handled;</li>
+<li>the pipeline executes tasks in the expected order;</li>
+<li>the pipeline stops after a critical task failure.</li>
+</ul>
+<p>This tests scheduling logic without depending on the wall clock.</p>
+<p>The example tests also run the short demonstrations directly.</p>
+<p>The complete solution tests use temporary directories for filesystem work.</p>
+<hr />
+<h2 id="20-step-by-step-examples">20. Step-by-Step Examples<a class="headerlink" href="#20-step-by-step-examples" title="Permanent link">&para;</a></h2>
+<p>The examples introduce the ideas in small pieces.</p>
+<h3 id="step-1-keep-a-process-alive">Step 1 — Keep a process alive<a class="headerlink" href="#step-1-keep-a-process-alive" title="Permanent link">&para;</a></h3>
+<p>Learn the while loop and time.sleep() pattern without introducing the
+scheduler.</p>
+<p>See:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">../examples/3.5/3-5-step1-while-loop.py</span>
+</code></pre></div>
+
+<h3 id="step-2-register-a-scheduled-job">Step 2 — Register a scheduled job<a class="headerlink" href="#step-2-register-a-scheduled-job" title="Permanent link">&para;</a></h3>
+<p>Use the schedule package and inspect a registered job.</p>
+<p>See:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">../examples/3.5/3-5-step2-schedule.py</span>
+</code></pre></div>
+
+<h3 id="step-3-coordinate-task-functions">Step 3 — Coordinate task functions<a class="headerlink" href="#step-3-coordinate-task-functions" title="Permanent link">&para;</a></h3>
+<p>Store task functions in a list and execute them in order.</p>
+<p>See:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">../examples/3.5/3-5-step3-orchestration.py</span>
+</code></pre></div>
+
+<h3 id="step-4-separate-scheduler-registration">Step 4 — Separate scheduler registration<a class="headerlink" href="#step-4-separate-scheduler-registration" title="Permanent link">&para;</a></h3>
+<p>Build reusable interval and daily registration functions.</p>
+<p>See:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">../examples/3.5/3-5-step4-scheduler-component.py</span>
+</code></pre></div>
+
+<h3 id="step-5-build-the-complete-scheduler">Step 5 — Build the complete scheduler<a class="headerlink" href="#step-5-build-the-complete-scheduler" title="Permanent link">&para;</a></h3>
+<p>Combine recurring jobs, orchestration, logging, and graceful shutdown.</p>
+<p>See:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">../examples/3.5/3-5-automation-engine.py</span>
+</code></pre></div>
+
+<hr />
+<h2 id="21-the-complete-project">21. The Complete Project<a class="headerlink" href="#21-the-complete-project" title="Permanent link">&para;</a></h2>
+<p>The project solution contains:</p>
+<h3 id="mainpy">main.py<a class="headerlink" href="#mainpy" title="Permanent link">&para;</a></h3>
+<p>The entry point configures logging, supports one-run execution, registers the
+recurring pipeline, and starts the scheduler.</p>
+<h3 id="automation_enginepy">automation_engine.py<a class="headerlink" href="#automation_enginepy" title="Permanent link">&para;</a></h3>
+<p>This is the procedural orchestration layer.</p>
+<p>It:</p>
+<ul>
+<li>runs tasks in order;</li>
+<li>logs task boundaries;</li>
+<li>collects task results;</li>
+<li>stops the pipeline after a failure;</li>
+<li>builds the three-task Workspace Automation pipeline.</li>
+</ul>
+<h3 id="schedulerpy">scheduler.py<a class="headerlink" href="#schedulerpy" title="Permanent link">&para;</a></h3>
+<p>This module owns recurring execution.</p>
+<p>It:</p>
+<ul>
+<li>creates a scheduler;</li>
+<li>registers interval jobs;</li>
+<li>registers daily jobs;</li>
+<li>prevents duplicate registrations;</li>
+<li>runs pending jobs in a loop;</li>
+<li>handles KeyboardInterrupt.</li>
+</ul>
+<h3 id="tasksindex_taskpy">tasks/index_task.py<a class="headerlink" href="#tasksindex_taskpy" title="Permanent link">&para;</a></h3>
+<p>This task scans the workspace and writes the current Workspace Index.</p>
+<h3 id="taskscsv_reporterpy">tasks/csv_reporter.py<a class="headerlink" href="#taskscsv_reporterpy" title="Permanent link">&para;</a></h3>
+<p>This task reads the current Workspace Index and writes a CSV report.</p>
+<h3 id="tasksbackup_taskpy">tasks/backup_task.py<a class="headerlink" href="#tasksbackup_taskpy" title="Permanent link">&para;</a></h3>
+<p>This task backs up workspace files without silently overwriting an existing
+backup.</p>
+<h3 id="logging_utilspy">logging_utils.py<a class="headerlink" href="#logging_utilspy" title="Permanent link">&para;</a></h3>
+<p>This module keeps logging configuration separate from task and scheduling
+logic.</p>
+<hr />
+<h2 id="22-exercise-add-a-second-interval">22. Exercise: Add a Second Interval<a class="headerlink" href="#22-exercise-add-a-second-interval" title="Permanent link">&para;</a></h2>
+<p>Add another scheduled job for a different task.</p>
+<p>Do not copy the scheduler loop.</p>
+<p>Instead, add another registration function call and give the job its own tag.</p>
+<p>Think about whether the new job should run the complete pipeline or only one
+task.</p>
+<hr />
+<h2 id="23-exercise-add-a-dry-run">23. Exercise: Add a Dry Run<a class="headerlink" href="#23-exercise-add-a-dry-run" title="Permanent link">&para;</a></h2>
+<p>Add a command-line option that reports what the pipeline would do without
+changing files.</p>
+<p>Keep scheduling out of this exercise.</p>
+<p>The goal is to practice separating:</p>
+<ul>
+<li>deciding what should happen;</li>
+<li>actually performing the operation.</li>
+</ul>
+<hr />
+<h2 id="24-exercise-improve-shutdown-logging">24. Exercise: Improve Shutdown Logging<a class="headerlink" href="#24-exercise-improve-shutdown-logging" title="Permanent link">&para;</a></h2>
+<p>Add a final message that records how many scheduled jobs were registered when
+the scheduler stopped.</p>
+<p>Use the scheduler's existing job collection.</p>
+<p>Do not introduce a class.</p>
+<hr />
+<h2 id="new-versus-reused-concepts-recap">New Versus Reused Concepts Recap<a class="headerlink" href="#new-versus-reused-concepts-recap" title="Permanent link">&para;</a></h2>
+<h3 id="new-concepts-recap">New Concepts Recap<a class="headerlink" href="#new-concepts-recap" title="Permanent link">&para;</a></h3>
+<p>You now know:</p>
+<ul>
+<li>how a while loop can keep a process alive;</li>
+<li>how time.sleep() controls repeated checks;</li>
+<li>how to register recurring jobs with schedule;</li>
+<li>how interval and daily schedules differ;</li>
+<li>how to coordinate several functions as a pipeline;</li>
+<li>how to separate scheduling from orchestration;</li>
+<li>how to prevent duplicate schedule registration;</li>
+<li>how to handle KeyboardInterrupt for graceful shutdown.</li>
+</ul>
+<h3 id="reused-concepts-recap">Reused Concepts Recap<a class="headerlink" href="#reused-concepts-recap" title="Permanent link">&para;</a></h3>
+<p>You applied:</p>
+<ul>
+<li>functions and return values;</li>
+<li>loops and conditionals;</li>
+<li>exceptions;</li>
+<li>logging;</li>
+<li>modules;</li>
+<li>third-party packages;</li>
+<li>pathlib and file operations;</li>
+<li>dictionaries and JSON;</li>
+<li>the Workspace Index;</li>
+<li>the reliability patterns from Chapter 3.4.</li>
+</ul>
+<p>The project is still procedural. The next major change is object-oriented
+design, not another scheduling feature.</p>
+<hr />
+<h2 id="chapter-recap">Chapter Recap<a class="headerlink" href="#chapter-recap" title="Permanent link">&para;</a></h2>
+<p>The key ideas are:</p>
+<ol>
+<li>A scheduler decides when work should run.</li>
+<li>A while loop keeps a scheduler process alive.</li>
+<li>time.sleep() prevents the loop from checking continuously.</li>
+<li>The schedule package registers recurring jobs.</li>
+<li>Scheduling and task implementation should remain separate.</li>
+<li>automation_engine.py coordinates tasks without being a class.</li>
+<li>Task order matters when later tasks depend on updated state.</li>
+<li>Duplicate schedule registration should be prevented.</li>
+<li>KeyboardInterrupt can provide a clean shutdown path.</li>
+<li>Tests should verify scheduling behavior without waiting for real time.</li>
+</ol>
+<p>The Workspace Automation Engine can now run its pipeline automatically instead
+of depending on someone to start every task manually.</p>
+<h2 id="project-evolution">Project Evolution<a class="headerlink" href="#project-evolution" title="Permanent link">&para;</a></h2>
+<p>The Workspace Automation Engine has now evolved like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">3.1</span><span class="w">  </span><span class="n">Workspace</span>
+<span class="w">      </span><span class="err">↓</span>
+<span class="w">     </span><span class="n">DownloadOrganizer</span>
+<span class="w">      </span><span class="err">↓</span>
+<span class="mf">3.2</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="n">Workspace</span><span class="w"> </span><span class="n">Index</span>
+<span class="w">      </span><span class="err">↓</span>
+<span class="mf">3.3</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="n">CsvReporter</span>
+<span class="w">      </span><span class="err">↓</span>
+<span class="mf">3.4</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="n">BackupTask</span>
+<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="n">Validation</span>
+<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="n">Handling</span>
+<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="n">Logging</span>
+<span class="w">      </span><span class="err">↓</span>
+<span class="mf">3.5</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="n">automation_engine</span><span class="o">.</span><span class="n">py</span>
+<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="n">Scheduler</span>
+<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="n">Recurring</span><span class="w"> </span><span class="n">Execution</span>
+</code></pre></div>
+
+<p>The orchestration layer is still procedural.</p>
+<p>Chapter 3.6 moves the application toward configuration and deployment,
+including environment-specific settings and operating-system scheduling.</p>
+<p>Chapter 3.7 later introduces classes and the formal AutomationTask /
+AutomationEngine framework.</p>
+<h2 id="next-chapter">Next Chapter<a class="headerlink" href="#next-chapter" title="Permanent link">&para;</a></h2>
+<h3 id="chapter-36-deploying-the-automation-engine">Chapter 3.6 — Deploying the Automation Engine<a class="headerlink" href="#chapter-36-deploying-the-automation-engine" title="Permanent link">&para;</a></h3>
+<p>The next chapter moves the automation from a development project toward an
+application that can be configured and deployed reliably.</p>
+<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Python documentation: while statements</li>
+<li>Python documentation: time.sleep()</li>
+<li>schedule documentation</li>
+<li>Chapter 3.4 — Building Reliable Automations</li>
+<li>Chapter 3.6 — Deploying the Automation Engine</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/js/custom.js"></script>
+      
+    
+  </body>
+</html>
