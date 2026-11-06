@@ -1,4 +1,4 @@
-﻿site_name: "Learning Python the Practical Way: Web Scraping, Automation & APIs"
+site_name: "Learning Python the Practical Way: Web Scraping, Automation & APIs"
 site_description: "A concise Python fundamentals book designed for busy professionals, with practical examples and projects. Covers web scraping, automation, APIs, and more."
 site_author: "Mark Cullingworth Overton"
 repo_url: "https://github.com/mark-ovi/learning-python-the-practical-way"      # replace with your public repo URL
@@ -15,6 +15,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.top
+    - content.code.copy
   palette:
     - scheme: default
       primary: indigo
@@ -30,6 +31,9 @@ markdown_extensions:
   - codehilite
   - pymdownx.arithmatex
   - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: !relative $docs_dir
+      check_paths: true
   - toc:
       permalink: true
 
