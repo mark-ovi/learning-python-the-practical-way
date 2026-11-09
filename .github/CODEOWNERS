@@ -1,1 +1,5 @@
-/ @mark-ovi
+# Default owner for the repository
+* @mark-ovi
+
+# Protect the ownership rules themselves
+/.github/CODEOWNERS @mark-ovi
