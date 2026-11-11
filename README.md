@@ -19,16 +19,25 @@ A free, open-source Python fundamentals book. This repository hosts the public b
 
 ## Getting started
 
-- VS Code (recommended): Install Remote - Containers, open repository, then "Reopen in Container".
-- Or run locally:
-  - Linux/macOS:
-    - ./scripts/setup.sh
-    - .venv/bin/activate:
-  - Windows PowerShell:
-    - ./scripts/setup.ps1
-    - .venv\Scripts\Activate.ps1
-- Dev server default port: 8000
+- **VS Code (recommended):** Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), open the repository, then select **Reopen in Container**.
 
+- **Or set up locally** from the repository root:
+
+  - Linux/macOS:
+    ```bash
+    ./scripts/setup.sh
+    source .venv/bin/activate
+    ```
+
+  - Windows PowerShell:
+    ```powershell
+    .\scripts\setup.ps1
+    .venv\Scripts\Activate.ps1
+    ```
+
+The setup scripts require Python 3.14 and install the repository dependencies into `.venv`. For a manual setup, follow the Python installation and virtual-environment instructions in the book's Introduction & Setup chapter.
+
+- Dev server default port: 8000
 ## Licensing
 
 - **Book text and instructional prose:** [CC BY-NC-SA 4.0](LICENSE.md).
