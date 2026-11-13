@@ -1,14 +1,193 @@
-# Text and prose license
+# Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
 
-Book text and instructional prose in this repository are licensed under the
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
-license (CC BY-NC-SA 4.0).
+(CC BY-NC-SA 4.0)
 
-License deed:
-https://creativecommons.org/licenses/by-nc-sa/4.0/
+Creative Commons Corporation is not a law firm and does not provide legal
+services. Distribution of this license does not create an attorney-client
+relationship. Creative Commons makes no warranties concerning the license or
+legal risks involved in its use. Creative Commons is not a party to disputes
+relating to the license. Notwithstanding, Creative Commons reserves the right
+to publish new versions (including revisions) of these terms from time to
+time. No surrender of any rights under this License is intended by any other
+term or condition in this document.
 
-Legal code:
-https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+Creative Commons Legal Code
 
-This license applies to non-code instructional content unless a file states a
-different license.
+THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE
+COMMONS PUBLIC LICENSE ("CC PL" OR "LICENSE"). THE PERSON ACCEPTING THE
+LICENSE ("YOU") IS GRANTED THE RIGHTS BELOW SUBJECT TO THE CONDITIONS SET
+FORTH IN THIS LICENSE. THE LICENSE TERMS AND CONDITIONS ARE BINDING ON YOU
+AND YOUR SUCCESSORS.
+
+Section 1 — Definitions.
+
+a. Adapted Material means material subject to Copyright and Similar Rights that
+is derived from or based upon the Work and in which the Work is translated,
+altered, arranged, transformed, or otherwise modified in a manner requiring
+permission under the Copyright and Similar Rights held by the Licensor. For
+example, a translation of the Work is Adapted Material. For the avoidance of
+doubt, where the Work is a musical work, performance, or sound recording,
+Adapted Material is always produced where the original recording is re-recorded.
+
+b. Adapter's License means the license You apply to Your Copyright and Similar
+Rights in Your contributions to Adapted Material in accordance with the
+requirements of this License.
+
+c. BY-NC-SA Compatible License means a license listed at
+<https://creativecommons.org> that is approved for compatibility with the BY-NC-SA
+4.0 International License.
+
+d. Copyright and Similar Rights means copyright and/or similar rights
+closely related to copyright including, without limitation, performance,
+broadcast, sound recording, and Sui Generis Database Rights, without regard to
+how the rights are labeled or categorized. For purposes of this License,
+the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar
+Rights.
+
+e. Effective Technological Measures means those measures that, in the
+absence of proper authority, may not be circumvented under laws fulfilling
+obligations under Article 11 of the WIPO Copyright Treaty adopted on 20
+December 1996 and/or similar international agreements.
+
+f. Exceptions and Limitations means fair use, fair dealing or other
+equivalent, recognized exceptions or limitations to Copyright and Similar
+Rights.
+
+g. Licensed Rights means the rights granted to You subject to the terms and
+conditions of this License, which are limited to all Copyright and Similar
+Rights that apply to Your use of the Licensed Material and that the Licensor
+has authority to license.
+
+h. Licensor means the individual(s) or entity(ies) granting rights under this
+License.
+
+i. Share means to provide material to the public by any means or process that
+requires permission under the Licensed Rights, such as reproduction,
+public display, public performance, distribution, dissemination, communication,
+or importation, and to make material available to the public including in ways
+that members of the public may access the material from a place and at a time
+individually chosen by them.
+
+j. Sui Generis Database Rights means rights other than copyright resulting
+from Directive 96/9/EC of the European Parliament and of the Council of 11
+March 1996 on the legal protection of databases, as amended, understood
+as provided in Section 2(b)(2) below.
+
+k. You means the individual or entity exercising the Licensed Rights under
+this License. Your has a corresponding meaning.
+
+Section 2 — Scope.
+
+a. Rights Granted. Subject to the terms and conditions of this License, the
+Licensor hereby grants You a worldwide, royalty-free, non-sublicensable,
+non-exclusive, irrevocable license to exercise the Licensed Rights in the
+Licensed Material to:
+
+   1. reproduce and Share the Licensed Material, in whole or in part; and
+   2. produce, reproduce, and Share Adapted Material.
+
+b. Exceptions and Limitations. For the avoidance of doubt, where Exceptions
+and Limitations apply to Your use, this License does not apply, and You do not
+need to comply with its terms and conditions.
+
+c. Term. The term of the License is the duration of the Copyright and Similar
+Rights licensed here.
+
+d. Limitations on the Licensed Rights. For the avoidance of doubt, the
+Licensor reserves all rights not expressly granted by this License. In no
+event will the rights granted above include the right to:
+
+   1. apply legal terms or technological measures that restrict others from
+      doing anything the license permits; or
+   2. exercise any rights in Copyright and Similar Rights that the Licensor
+      has expressly excluded from this License.
+
+Section 3 — License Conditions.
+
+Your exercise of the Licensed Rights is expressly made subject to the
+following conditions.
+
+a. Attribution. If You Share the Licensed Material (including in modified
+form), You must:
+
+   1. retain the following if it is supplied by the Licensor with the
+      Licensed Material:
+      A. identification of the creator(s) of the Licensed Material and any
+         others designated to receive attribution (attribution parties) in a
+         manner specified by the Licensor;
+      B. a copyright notice;
+      C. a notice that refers to this License;
+      D. a disclaimer of warranties;
+      E. a link to the material (if supplied); and
+      F. a notice that changes were made (if any).
+   2. indicate if You modified the Licensed Material and retain an indication
+      of previous modifications;
+   3. indicate the title of the Licensed Material if supplied; and
+   4. indicate the URL for the license (<https://creativecommons.org/licenses/by-nc-sa/4.0/>)
+      if possible.
+
+You may satisfy the conditions in Section 3(a) in any reasonable manner based
+on the medium, means, and context in which You Share the Licensed Material.
+For example, it is sufficient to include the required information in a
+copyright notice or a credit line associated with the material.
+
+b. NonCommercial. You may not exercise any of the Licensed Rights in
+connection with a commercial purpose. A commercial purpose is one primarily
+intended for commercial advantage or monetary compensation. For clarity,
+non-commercial uses include personal use, educational use, scholarly use,
+and other uses that are not primarily intended for or directed toward
+commercial advantage or monetary compensation.
+
+c. ShareAlike. If You Share Adapted Material, You must license the Adapted
+Material under the same license as this one (CC BY-NC-SA 4.0) or a BY-NC-SA
+Compatible License.
+
+Section 4 — Sui Generis Database Rights.
+
+Where the Licensed Rights include Sui Generis Database Rights that apply to
+Your use of the Licensed Material, the Licensor waives to the fullest extent
+permitted by law the Licensor’s rights to prohibit You from extracting,
+reutilizing, reproducing, and Share-ing all or a substantial portion of the
+contents of the database.
+
+Section 5 — Fair Dealing and Other Rights.
+
+Nothing in this License reduces, limits, or restricts any of Your rights
+under Exceptions and Limitations.
+
+Section 6 — Disclaimer of Warranties and Limitation of Liability.
+
+Unless expressly stated otherwise, to the extent permitted by law, the
+Licensor offers the Licensed Material as-is and makes no representations or
+warranties of any kind concerning the material. The Licensor disclaims all
+liability for any direct, indirect, incidental, consequential, special,
+exemplary, or other damages arising out of the use of the Licensed Material.
+
+Section 7 — Termination.
+
+a. This License and the rights granted hereunder will terminate automatically
+upon any breach by You of the terms of this License. Individuals or entities
+who have received Adapted Material from You under this License, however,
+will not have their licenses terminated provided their use remains in
+compliance with this License.
+
+b. The Licensor may also expressly and explicitly notify You that the
+License is terminated for You.
+
+Section 8 — Miscellaneous.
+
+a. Each time You Share the Licensed Material (including in modified form),
+the Licensor offers the recipient a license to exercise the Licensed Rights
+under the terms and conditions of this License.
+
+b. The Licensor shall be identified as the original Licensor and the
+copyright holder where applicable.
+
+c. Nothing in this License is intended to reduce, limit, or restrict any
+rights arising from Exceptions and Limitations that may apply.
+
+d. No additional obligations may be imposed on the Licensor by any
+interpretation of this License.
+
+For the full canonical legal code and human-readable deed, see:
+<https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode>
