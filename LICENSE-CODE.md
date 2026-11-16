@@ -21,10 +21,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 Scope note:
-This license applies to code under /code/ (if present), plus code under:
+
+This license applies to code under:
+
 - /free/content/examples/
 - /free/project-solutions/
-- /paid/content/examples/
-- /paid/project-solutions/
 
-This license does not automatically apply to book text, chapter prose, or other non-code documentation unless explicitly stated.
+This license does not apply to paid content, paid project solutions,
+book text, chapter prose, or other non-code documentation unless
+explicitly stated.
